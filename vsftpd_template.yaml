@@ -1,0 +1,25 @@
+---
+- name: use template to install vsftp
+  hosts: all
+  vars:
+    anonymous_enable: yes
+    local_enable: yes
+    write_enable: yes
+    anon_upload_enable: yes
+    to_start: vsftpd
+  tasks:
+    - name: install vsftpd
+      yum:
+        name: "{{ to_start }}"
+        state: latest
+    - name: copy file using template
+      template:
+        src: vsftpd.js
+        dest: /etc/vsftpd/vsftpd.conf
+      notify:
+        - restart_vsftpd
+  handlers:
+    - name: restart_vsftpd
+      service:
+        name: "{{ to_start }}"
+        state: restarted

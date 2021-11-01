@@ -1,0 +1,10 @@
+---
+  - name: create user using vault
+    hosts: ansible1.example.com
+    vars_files:
+      - secret.yml
+    tasks:
+      - name: user generate
+        user:
+          name: "{{ username }}"
+          password: "{{ pwhash }}"

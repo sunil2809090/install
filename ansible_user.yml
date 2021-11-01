@@ -1,0 +1,16 @@
+---
+- name: create ansibel user
+  hosts: all
+  tasks:
+  - name: add user
+    user:
+      name: ansible
+      generate_ssh_key: yes
+      group: wheel
+  - name: generate file
+    copy:
+      src: /etc/sudoers.d/ansible
+      dest: /etc/sudoers.d/ansible
+      remote_src: no
+      owner: root
+      mode: 644

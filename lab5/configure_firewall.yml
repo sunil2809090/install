@@ -1,0 +1,17 @@
+---
+- yum: 
+    name: "{{ fw_package }}"
+    state: latest
+
+- service: 
+    name: "{{ fw_service }}"
+    state: started
+
+- firewalld:
+    name: "{{ item }}"
+    immediate: true
+    state: enabled
+  with_items:
+    - http
+    - https
+  

@@ -1,0 +1,14 @@
+---
+  - name: check facts uisng when
+    hosts: all
+    vars:
+      supported_version:
+        - ubuntu
+        - CentOS
+        - redhat
+    tasks:
+      - name: install centos package
+        yum:
+          name: nginx
+          state: absent
+        when: ansible_distribution in supported_version

@@ -1,0 +1,13 @@
+---
+- name: start service
+  hosts: controller.example.com
+  vars:
+    my_service:
+      - crond
+      - sshd
+  tasks:
+    - name: start some service
+      service:
+        name: "{{ item }}"
+        state: started
+      loop: "{{ my_service }}"

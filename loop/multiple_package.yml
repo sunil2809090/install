@@ -1,0 +1,10 @@
+---
+  - name: install package
+    hosts: ansible2.example.com
+    tasks:
+      - yum:
+          name: "{{ item }}"
+          state: latest
+        with_items:
+          - nmap
+          - net-tools

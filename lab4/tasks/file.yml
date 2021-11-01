@@ -1,0 +1,19 @@
+---
+- name: Install and Start service
+  yum:
+    name:
+      - "{{ ansible_local.custom.packages.smb_package }}"
+      - "{{ ansible_local.custom.packages.ftp_package }}"
+    state: latest
+
+- name: Start MariaDB Service
+  service:
+    name: "{{ ansible_local.custom.service.smb_service }}"
+    state: started
+    enabled: true
+
+- name: Start FTP service
+  service:
+    name: "{{ ansible_local.custom.service.ftp_service }}"
+    state: started
+    enabled: true

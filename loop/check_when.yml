@@ -1,0 +1,9 @@
+---
+  - name: check when condition
+    hosts: all
+    tasks:
+      - name: check fact
+        debug:
+          msg: echo today is monday 
+        when: '"Monday" in ansible_date_time.weekday'
+

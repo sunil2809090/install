@@ -1,0 +1,12 @@
+---
+- name: install package
+  hosts: ansible1.example.com
+  tasks:
+    - name: include packages
+      include_vars: packages.yml
+
+    - name: install {{ packages.my_pkg }}
+      yum:
+        name: "{{ packages.my_pkg }}"
+        state: latest
+

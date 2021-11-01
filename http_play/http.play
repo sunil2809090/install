@@ -1,0 +1,16 @@
+---
+- name: playbook http
+  hosts: ansible2.example.com
+  tasks:
+    - name: install http
+      yum: name=httpd
+    - name: start and enable http
+      service: name=httpd enabled=yes state=started
+    - name: create web server file
+      copy:
+        content: "welcome to my web server"
+        dest: "/var/www/html/index.html"
+    - name: open port
+      firewalld:
+        port: 80
+        permanent: yes    

@@ -1,0 +1,10 @@
+---
+- hosts: all
+  vars:
+    system_owner: sunku@gmail.com
+  tasks:
+    - template:
+        src: motd.js
+        dest: /etc/motd
+        owner: root
+        mode: 0644

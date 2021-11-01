@@ -1,0 +1,8 @@
+---
+- name: update hosts file
+  hosts: all
+  tasks:
+    - name: /etc/hosts.bak file to update
+      template:
+        src: templates/hosts.js
+        dest: /etc/hosts.bak

@@ -1,0 +1,10 @@
+[all]
+controller.example.com
+ansible1.example.com
+ansible2.example.com
+
+[file]
+ansible1.example.com
+
+[lamp]
+ansible2.example.com

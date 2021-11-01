@@ -1,0 +1,14 @@
+---
+- name: Deploy service
+  hosts: all
+  tasks:
+  - name: read the tasks.yml to deploy 
+    include: taks.yml
+    vars:
+      package: samba
+      service: smb
+      state: started
+      #    register: ou
+      #  - name: debug included tasks
+      #debug:
+      #var: ou

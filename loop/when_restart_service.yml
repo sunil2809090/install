@@ -1,0 +1,13 @@
+---
+- name: restart sshd
+  hosts: all
+  tasks:
+    - name: restart crond service
+      command: /usr/bin/systemctl is-active crond
+      ignore-errors: yes
+      register: result
+    - name: restart sshd based on crond
+      service:
+        name: sshd
+	state: restarted
+      when: result.rc == 0  

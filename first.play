@@ -1,0 +1,17 @@
+---
+- name: simple play
+  hosts: ansible1.example.com
+  tasks:
+  - name: installng vim
+    yum: name=vim-enhanced
+  - name: install vsftpd
+    yum: name=vsftpd
+  - name: start vsftpd
+    service: name=vsftpd enabled=yes
+  - name: copy content
+    copy:
+     content: "fist vsftpd file"
+     dest: "/var/ftp/pub/README"
+     mode: 0644
+     group: ftp
+...

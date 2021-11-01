@@ -1,0 +1,8 @@
+---
+  - name: install package
+    hosts: all
+    tasks:
+      - name: Install mariaDB
+        package:
+          name: mariadb
+        when: inventory_hostname in groups [ "lamp" ]

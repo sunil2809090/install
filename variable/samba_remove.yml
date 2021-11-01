@@ -1,0 +1,10 @@
+---
+- name: remove package
+  hosts: all
+  tasks:
+    - name: remove package with depencdency
+      yum:
+       name: samba
+       state: absent
+       autoremove: yes
+            

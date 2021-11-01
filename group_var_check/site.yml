@@ -1,0 +1,13 @@
+---
+- name: show group variable
+  hosts: lamp
+  vars:
+    web_package: apache
+    web_service: apache
+  tasks:
+    - name: installing group package {{ web_package }}
+      debug:
+        msg: "checking for package {{ web_package }}"
+    - name: installing group package {{ web_service }}
+      debug:
+        msg: "checking for package {{ web_service }}"
