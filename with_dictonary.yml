@@ -1,0 +1,23 @@
+---
+- hosts: controller.example.com
+  vars:
+    monitoring_instances:
+      us-east-1:
+        ami: ami-0c4fba61
+        subnet: subnet-1197b62b
+        vpc: vpc-3298bf57
+      us-west-1:
+        ami: ami-21d5ad41
+        subnet: subnet-4a2a8e13
+        vpc: vpc-6e64db0b
+
+  tasks:
+    - name: show dictionary
+      debug:
+        msg: "{{item.key}}: {{item.value.ami}} {{item.value.subnet}} {{item.value.vpc}}"
+      loop: "{{ lookup('dict', monitoring_instances) }}"
+
+    - name: show dictionary
+      debug:
+        msg: "{{item.key}}: {{item.value}}"
+      with_dict: {a: 1, b: 2, c: 3}
